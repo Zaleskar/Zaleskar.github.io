@@ -5,6 +5,12 @@ let temperature = document.getElementById("h1");
 let humidity = document.getElementById("h2");
 let windSpeed = document.getElementById("windSpd");
 let weather_img = document.getElementById("weather_img");
+let day_time = document.getElementById("timeofday");
+let night = ['00:00:00Z','01:00:00Z','02:00:00Z','03:00:00Z','04:00:00Z','05:00:00Z'];
+let morning = ['06:00:00Z','07:00:00Z','08:00:00Z','09:00:00Z','10:00:00Z','11:00:00Z'];
+let day = ['12:00:00Z','13:00:00Z','14:00:00Z','15:00:00Z','16:00:00Z','17:00:00Z','18:00:00Z'];
+let evening = ['19:00:00Z','20:00:00Z','21:00:00Z','22:00:00Z','23:00:00Z'];
+
 
 //let options = {
     //method: 'GET',
@@ -45,13 +51,21 @@ async function WeatherDispaly () {
   //day and night cycle
   let time = data.timelines.hourly[6].time.substr(11)
   
-  if (time = '00:00:00Z', '01:00:00Z','02:00:00Z','03:00:00Z','04:00:00Z','05:00:00Z') {
-    Conditions = data.timelines.hourly[6].values.weatherCode = 1000;
-
+  if (time == night) {
+    //Conditions = data.timelines.hourly[6].values.weatherCode = 1000;
+    day_time.innerHTML = 'Night'
+  } else if (time == morning) {
+    day_time.innerHTML = 'Morning'
+  } else if (time == day) {
+    day_time.innerHTML = 'Day'
+  } else {
+    day_time.innerHTML = 'Evening'
   }
 }
 
+
 WeatherDispaly();
+
 
 
   
